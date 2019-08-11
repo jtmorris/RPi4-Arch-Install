@@ -80,8 +80,8 @@ echo;
 while true; do
 	read -p "Sound good? Continue? [y/n]" yn
 	case $yn in
-		[Yy]* ) $CONT=true;;
-		[Nn]* ) $CONT=false;;
+		[Yy]* ) CONT=true;;
+		[Nn]* ) CONT=false;;
 		* ) echo "Please answer yes or no.";;
 	esac
 done
@@ -109,7 +109,7 @@ source 000c-Mount-SD-Partitions.sh $DEVICE
 if [ -z "$IMAGE" ]
 then
 	source 000d-Download-Arch-Image.sh $URL
-	$IMAGE="build/arch_image.tar.gz"
+	IMAGE="build/arch_image.tar.gz"
 fi
 
 # 5) Extract Arch install

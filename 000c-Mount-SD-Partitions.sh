@@ -24,8 +24,8 @@ then # Not root user
 	echo "       with elevated privileges if needed."
 fi
 
-$BOOT_PART=$1+"1"
-$ROOT_PART=$1+"2"
+BOOT_PART=$1+"1"
+ROOT_PART=$1+"2"
 
 echo "[INFO] Mounting root partition of SD card, '$ROOT_PART', to './build/root'."
 mount $ROOT_PART build/root
