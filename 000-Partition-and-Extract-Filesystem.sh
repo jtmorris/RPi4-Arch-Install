@@ -18,7 +18,7 @@
 #	- Clone the containing git repo and enter the directory, or
 #		download this file and place in its own directory.
 #	- Run this script:
-# 		./000-Partition-and-Extract-Filesystem.py --device "/dev/sdX"
+# 		./000-Partition-and-Extract-Filesystem.py /dev/sdX
 ########################################################################
 
 DEFAULT_ARCH_IMAGE_URL="http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz"
