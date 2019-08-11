@@ -21,5 +21,5 @@ then
 	echo "[ERR] Invalid arguments given. No download URL."
 	exit 1;
 fi
-
+echo "[INFO] Download image from '$1'."
 wget $1 -O "build/arch_image.tar.gz"
