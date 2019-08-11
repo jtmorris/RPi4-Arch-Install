@@ -51,7 +51,7 @@ echo; echo;
 echo "####################"
 echo "# Action Breakdown #"
 echo "####################"
-echo "1) Create a working directory structure in: '${pwd}/build'."
+echo "1) Create a working directory structure in: '$(pwd)/build'."
 echo "2) Partition the SD card, '$DEVICE', with required partition structure."
 echo "3) Mount the SD card partitions in the build directory."
 
