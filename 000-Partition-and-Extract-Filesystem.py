@@ -79,6 +79,14 @@ def main():
 		urllib.request.urlretrieve(url, "arch_image.tar.gz")
 		img = "arch_image.tar.gz"
 		print("[INFO] Download completed. Image stored at './build/arch_image.tar.gz.'")
+	else:
+		# We may have been given a relative image path. However, we have
+		# changed to the build directory, which breaks the relative path.
+		# So... let's make it absolute.
+		os.chdir("../")
+		img = os.path.abspath(img)
+		print("[INFO] Path to image provided at: " + img)
+		os.chdir("build")
 
 	#####################
 	# Extract the image #
