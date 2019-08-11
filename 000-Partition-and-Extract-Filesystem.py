@@ -130,24 +130,26 @@ def define_args():
 	ap.add_argument("-d", "--device",
 		help="Disk to install to. Example: /dev/sda")
 
-	args = vars(ap.parse_args())
-	dev = args.get("device", None)
-	url = args.get("image", None)
-
 	#### Override the image download and specify one already downloaded
 	#### Example: "~/RpPi4-Arch-Install/arch_image.tar.gz"
 	ap.add_argument("i", "--image",
 		help="Path to an already downloaded Arch image.",
 		default=None)
 
+	args = vars(ap.parse_args())
+	dev = args.get("device", None)
+	url = args.get("url", None)
+	img = args.get("image", None)
+
+
 	if not dev:
 		print("[ERR] No device selected. One must be provided via the " +
 			" '--device' argument.")
 		sys.exit(1)
 
-	if not url:
+	if not url and not img:
 		print("No Arch image download location provided. One must be provided." +
-			" Try the '--image' argument.")
+			" Try the '--url' or '--image' arguments.")
 		sys.exit(1)
 
 	return args
