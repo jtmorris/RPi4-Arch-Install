@@ -9,7 +9,7 @@ import sys
 
 def sh_command_wrapper(*args):
 	return subprocess.Popen(args, stdout=subprocess.PIPE,
-		stderr=subprocess.PIPE)
+		stderr=subprocess.PIPE, shell=True)
 
 
 def confirmation_query(question, default="yes"):
