@@ -38,21 +38,10 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "[INFO] Updating Arch install."
 pacman -Syuu --noconfirm
 
-# Install AUR helper 'trizen'
-echo "[INFO] Installing 'git'."
-pacman -S --noconfirm --needed git
-echo "[INFO] Install 'trizen' AUR helper."
-cd /tmp
-git clone http://aur.archlinux.org/trizen.git
-cd trizen
-makepkg -si --noconfirm
-cd ..
-rm -rf trizen
-
 # Rename the default user
 echo "[INFO] Renaming default user from 'alarm' to 'john'"
 pkill -9 -u alarm
-usermod -l alarm john
+usermod -l john alarm
 usermod -d /home/alarm -m john
 usermod -u 2000 john
 groupmod -n john alarm
@@ -66,15 +55,40 @@ echo; echo;
 echo "Change the default user (john) password:"
 passwd john
 
+# Install sudo
+echo "[INFO] Installing 'sudo'"
+pacman -S --noconfirm --needed sudo
+
+# Add 'john' to wheel
+echo "[INFO] Giving 'john' sudo rights."
+gpasswd -a john wheel
+
+echo "[INFO] Switching to 'john' and asking for 'sudo' rights."
+su john
+cd ~
+echo; echo;
+echo "Please retype your password to give script sudo permissions."
+sudo pwd
+
+# Install AUR helper 'trizen'
+echo "[INFO] Installing 'git'."
+sudo pacman -S --noconfirm --needed git
+echo "[INFO] Install 'trizen' AUR helper."
+git clone http://aur.archlinux.org/trizen.git
+cd trizen
+sudo makepkg -si --noconfirm
+cd ..
+rm -rf trizen
+
 # Install some basic important packages
 # powerpill for parallel package downloading
 echo "[INFO] Installing 'powerpill'"
 git clone https://aur.archlinux.org/powerpill.git
 cd powerpill
-makepkg -si --noconfirm
+sudo makepkg -si --noconfirm
 cd ..
 rm -rf powerpill
 
 # network-manager for wifi
 echo "[INFO] Installing 'networkmanager'"
-powerpill -S networkmanager --noconfirm
+sudo powerpill -S networkmanager --noconfirm
