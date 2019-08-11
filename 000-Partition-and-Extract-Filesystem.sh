@@ -27,14 +27,10 @@ DEFAULT_ARCH_IMAGE_URL="http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.
 ################################
 # Handle image override switch #
 ################################
-# process arguments "$1", "$2", ... (i.e. "$@")
-while getopts "idu:" opt; do
-    case $opt in
-    i) IMAGE=$OPTARG ;;
-    d) DEVICE=$OPTARG ;;
-    u) URL=$OPTARG ;;
-    esac
-done
+DEVICE = $1
+IMAGE = $2
+URL = $3
+
 if [ -z "$DEVICE" ]
 then
 	echo "[ERR] No SD card device specified! Must provide one using '-d' switch."
