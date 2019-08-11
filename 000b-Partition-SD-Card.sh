@@ -24,7 +24,7 @@ fi
 echo "[INFO] This script will format the specified device: $1"
 echo; echo;
 while true; do
-	read -p "All files will be lost on the device. Are you sure? [y/n]" yn
+	read -p "All files will be lost on '$1'. Are you sure? [y/n]" yn
 	case $yn in
 		[Yy]* )
 			CONT=true;
