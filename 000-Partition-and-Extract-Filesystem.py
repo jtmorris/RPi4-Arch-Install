@@ -33,7 +33,8 @@ def main():
 	# Command Line Arguments
 	args = define_args()
 	dev = args.get("device", None)
-	url = args.get("image", None)
+	url = args.get("url", None)
+	img = args.get("image", None)
 
 	###################
 	# Format the card #
@@ -61,27 +62,29 @@ def main():
 	shcw("mkdir build")
 	shcw("mkdir build/root")
 	shcw("mkdir build/boot")
-	shcw("tree build")
+	goshcw(shcw("tree build"))
 	os.chdir("build")
 	print('[INFO] Changing to build working directory: ' + goshcw(shcw("pwd")))
 
 	#### Mount the partitions to working directories
 	print("[INFO] Mounting the partitions.")
-	shcw("mount " + dev + "1 boot")
-	shcw("mount " + dev + "2 root")
+	goshcw(shcw("sudo mount " + dev + "1 boot"))
+	goshcw(shcw("sudo mount " + dev + "2 root"))
 
 	######################
 	# Download the image #
 	######################
-	print("[INFO] Downloading image. This may take a while.")
-	urllib.request.urlretrieve(url, "arch_image.tar.gz")
-	print("[INFO] Download completed. Image stored at './build/arch_image.tar.gz.'")
+	if not img:
+		print("[INFO] Downloading image. This may take a while.")
+		urllib.request.urlretrieve(url, "arch_image.tar.gz")
+		img = "arch_image.tar.gz"
+		print("[INFO] Download completed. Image stored at './build/arch_image.tar.gz.'")
 
 	#####################
 	# Extract the image #
 	#####################
 	print("[INFO] Extracting image to mounted root partition.")
-	shcw("bsdtar -xpf arch_image.tar.gz -C root")
+	shcw("bsdtar -xpf " + img + " -C root")
 	shcw("sync")
 	print("[INFO] Moving '/boot' directory to boot partition.")
 	shcw("mv root/boot/* boot")
@@ -90,7 +93,7 @@ def main():
 	# Clean up #
 	############
 	print("[INFO] Unmounting partitions.")
-	shcw("umount root boot")
+	shcw("sudo umount root boot")
 	print ("[INFO] Cleaning up.")
 	os.chdir("../")
 	shcw("rm -r build")
@@ -110,7 +113,7 @@ def define_args():
 	ap = argparse.ArgumentParser()
 	#### Location of download of Arch install image.
 	#### Example: "http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz"
-	ap.add_argument("-i", "--image",
+	ap.add_argument("-u", "--url",
 		help="Download location of the Arch image.",
 		default="http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz")
 
@@ -122,6 +125,12 @@ def define_args():
 	args = vars(ap.parse_args())
 	dev = args.get("device", None)
 	url = args.get("image", None)
+
+	#### Override the image download and specify one already downloaded
+	#### Example: "~/RpPi4-Arch-Install/arch_image.tar.gz"
+	ap.add_argument("i", "--image",
+		help="Path to an already downloaded Arch image.",
+		default=None)
 
 	if not dev:
 		print("[ERR] No device selected. One must be provided via the " +
