@@ -22,6 +22,7 @@
 ########################################################################
 
 from helper_tools import sh_command_wrapper as shcw
+from helper_tools import get_output_from_sh_command as goshcw
 from helper_tools import confirmation_query
 import argparse
 import sys
@@ -62,7 +63,7 @@ def main():
 	shcw("mkdir build/boot")
 	shcw("tree build")
 	os.chdir("build")
-	print('[INFO] Changing to build working directory: shcw("pwd")')
+	print('[INFO] Changing to build working directory: ' + goshcw(shcw("pwd")))
 
 	#### Mount the partitions to working directories
 	print("[INFO] Mounting the partitions.")

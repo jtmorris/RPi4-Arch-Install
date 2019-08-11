@@ -11,6 +11,9 @@ def sh_command_wrapper(*args):
 	return subprocess.Popen(args, stdout=subprocess.PIPE,
 		stderr=subprocess.PIPE, shell=True)
 
+def get_output_from_sh_command(popen_obj):
+	return popen_obj.communicate()[0].decode("utf-8")
+
 
 def confirmation_query(question, default="yes"):
 	"""Ask a yes/no question via raw_input() and return their answer.
