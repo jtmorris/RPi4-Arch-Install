@@ -64,7 +64,7 @@ passwd john
 echo "[INFO] Installing 'sudo'"
 pacman -S --noconfirm --needed sudo
 echo "" >> /etc/sudoers
-echo "Uncomment to allow members of group whell to execute any command" >> /etc/sudoers
+echo "# Uncomment to allow members of group whell to execute any command" >> /etc/sudoers
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
 # Add 'john' to wheel
