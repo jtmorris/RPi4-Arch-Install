@@ -1,0 +1,5 @@
+label: dos
+unit: sectors
+
+size=	+100M,	type=c
+type=83
