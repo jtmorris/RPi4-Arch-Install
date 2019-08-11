@@ -26,9 +26,17 @@ echo; echo;
 while true; do
 	read -p "All files will be lost on the device. Are you sure? [y/n]" yn
 	case $yn in
-		[Yy]* ) CONT=true; done;;
-		[Nn]* ) CONT=false; done;;
-		* ) echo "Please answer yes or no.";;
+		[Yy]* )
+			CONT=true;
+			break
+			;;
+		[Nn]* )
+			CONT=false;
+			break
+			;;
+		* )
+			echo "Please answer yes or no."
+			;;
 	esac
 done
 if [ $CONT == false ]

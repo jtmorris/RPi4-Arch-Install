@@ -80,15 +80,23 @@ echo;
 while true; do
 	read -p "Sound good? Continue? [y/n]" yn
 	case $yn in
-		[Yy]* ) CONT=true; done;;
-		[Nn]* ) CONT=false; done;;
-		* ) echo "Please answer yes or no.";;
+		[Yy]* )
+			CONT=true;
+			break
+			;;
+		[Nn]* )
+			CONT=false;
+			break
+			;;
+		* )
+			echo "Please answer yes or no."
+			;;
 	esac
 done
 if [ $CONT == false ]
 then
 	echo "[ERR] User cancellation."
-	exit 2;;
+	exit 2
 else
 	echo
 	echo "Awesome! Here we go!"
