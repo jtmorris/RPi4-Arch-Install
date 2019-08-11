@@ -21,8 +21,7 @@
 # 		./000-Partition-and-Extract-Filesystem.py --device "/dev/sdX"
 ########################################################################
 
-$DEFAULT_ARCH_IMAGE_URL = "http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz"
-$DEFAULT_SD_DEVICE = "/dev/sda"
+DEFAULT_ARCH_IMAGE_URL = "http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz"
 
 
 ################################
@@ -31,12 +30,20 @@ $DEFAULT_SD_DEVICE = "/dev/sda"
 # process arguments "$1", "$2", ... (i.e. "$@")
 while getopts "i:" opt; do
     case $opt in
-    i) $IMAGE=$OPTARG ;;
-    d) $DEVICE=$OPTARG ;;
-    u) $URL=$OPTARG ;;
-    \?) $IMAGE=""; $DEVICE=$DEFAULT_SD_DEVICE; $URL=$DEFAULT_ARCH_IMAGE_URL ;;
+    i) IMAGE=$OPTARG ;;
+    d) DEVICE=$OPTARG ;;
+    u) URL=$OPTARG ;;
     esac
 done
+if [ -z "$DEVICE" ]
+then
+	echo "[ERR] No SD card device specified! Must provide one using '-d' switch."
+	exit 1
+fi
+if [ -z "$URL" ]
+then
+	URL=$DEFAULT_ARCH_IMAGE_URL
+fi
 
 
 #####################################
