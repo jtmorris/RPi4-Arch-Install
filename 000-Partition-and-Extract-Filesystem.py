@@ -96,6 +96,7 @@ def main():
 	shcw("sync")
 	print("[INFO] Moving '/boot' directory to boot partition.")
 	shcw("mv root/boot/* boot")
+	shcw("sync")
 
 	############
 	# Clean up #
