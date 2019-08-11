@@ -65,7 +65,7 @@ echo "6) Move the '/boot' contents from the root partition to the boot partition
 echo "7) Unmount and clean up build directory."
 
 # If not root, warn
-if [ [$EUID -ne 0] ]
+if [[ $EUID -ne 0 ]]
 then # Not root user
 	echo
 	echo "<<<WARNING>>>: Steps 3 and 7 will require sufficient user privileges"
