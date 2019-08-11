@@ -62,14 +62,14 @@ def main():
 	shcw("mkdir build")
 	shcw("mkdir build/root")
 	shcw("mkdir build/boot")
-	goshcw(shcw("tree build"))
+	print(goshcw(shcw("tree build")))
 	os.chdir("build")
 	print('[INFO] Changing to build working directory: ' + goshcw(shcw("pwd")))
 
 	#### Mount the partitions to working directories
 	print("[INFO] Mounting the partitions.")
-	goshcw(shcw("sudo mount " + dev + "1 boot"))
-	goshcw(shcw("sudo mount " + dev + "2 root"))
+	print(goshcw(shcw("sudo mount " + dev + "1 boot")))
+	print(goshcw(shcw("sudo mount " + dev + "2 root")))
 
 	######################
 	# Download the image #
