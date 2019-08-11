@@ -16,7 +16,8 @@
 #		mounted to. Provide one argument: Arch install image.
 ########################################################################
 
-if [ $# != 1 ] then
+if [ $# != 1 ]
+then
 	echo "[ERR] Invalid arguments given. No Arch install image."
 	exit 1;
 fi

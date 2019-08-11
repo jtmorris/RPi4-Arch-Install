@@ -14,7 +14,8 @@
 #		directories (e.g. sudo).
 ########################################################################
 
-if [ [$EUID -ne 0] ] then # Not root user
+if [ [$EUID -ne 0] ]
+then # Not root user
 	echo "[WARN] Script not executed with root permissions. (e.g. sudo)"
 	echo "       Check output carefully for 'mount' errors and rerun"
 	echo "       with elevated privileges if needed."

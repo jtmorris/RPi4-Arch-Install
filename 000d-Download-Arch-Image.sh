@@ -16,7 +16,8 @@
 #		mounted to. Provide one argument: URL of download
 ########################################################################
 
-if [ $# != 1 ] then
+if [ $# != 1 ]
+then
 	echo "[ERR] Invalid arguments given. No download URL."
 	exit 1;
 fi

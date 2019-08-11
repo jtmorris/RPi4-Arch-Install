@@ -14,7 +14,8 @@
 #	- Execute script with one argument: Device file of SD card.
 ########################################################################
 
-if [ $# != 1 ] then
+if [ $# != 1 ]
+then
 	echo "[ERR] Invalid arguments given. No device file."
 	exit 1;
 fi
@@ -30,7 +31,8 @@ while true; do
 		* ) echo "Please answer yes or no.";;
 	esac
 done
-if [ $CONT == false ] then
+if [ $CONT == false ]
+then
 	echo "[ERR] User cancellation."
 	exit 2;;
 fi

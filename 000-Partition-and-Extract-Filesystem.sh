@@ -53,7 +53,8 @@ echo "2) Partition the SD card, '$DEVICE', with required partition structure."
 echo "3) Mount the SD card partitions in the build directory."
 
 # If no image path, download
-if [ -z "$IMAGE" ] then
+if [ -z "$IMAGE" ]
+then
 	echo "4) Download an Arch install image from '$URL' for installation."
 else
 	echo "4) Use existing Arch install image, '$IMAGE', for installation."
@@ -64,7 +65,8 @@ echo "6) Move the '/boot' contents from the root partition to the boot partition
 echo "7) Unmount and clean up build directory."
 
 # If not root, warn
-if [ [$EUID -ne 0] ] then # Not root user
+if [ [$EUID -ne 0] ]
+then # Not root user
 	echo
 	echo "<<<WARNING>>>: Steps 3 and 7 will require sufficient user privileges"
 	echo "for 'mount' and 'umount' commands. Recommend stopping and rerunning"
@@ -80,7 +82,8 @@ while true; do
 		* ) echo "Please answer yes or no.";;
 	esac
 done
-if [ $CONT == false ] then
+if [ $CONT == false ]
+then
 	echo "[ERR] User cancellation."
 	exit 2;;
 else
@@ -100,7 +103,8 @@ source 000b-Partition-SD-Card.sh $DEVICE
 source 000c-Mount-SD-Partitions.sh $DEVICE
 
 # 4) Download if neccessary
-if [ -z "$IMAGE" ] then
+if [ -z "$IMAGE" ]
+then
 	source 000d-Download-Arch-Image.sh $URL
 	$IMAGE="build/arch_image.tar.gz"
 fi
