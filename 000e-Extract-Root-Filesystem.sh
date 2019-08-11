@@ -24,8 +24,8 @@ fi
 
 echo "[INFO] Uncompressing Arch install image."
 bsdtar -xpf $1 -C build/root
-sleep 2 # Give disk a few seconds to catch up
 sync
-sleep 5 # Give disk a few seconds to catch up
 echo "[INFO] Moving /boot directory of Arch install to boot partition."
-mv build/root/boot/* build/boot
+# Need to copy, not move, in case there's something at the destination.
+cp -rf build/root/boot/* build/boot
+rm -rf build/root/boot
