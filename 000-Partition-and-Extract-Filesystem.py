@@ -132,7 +132,7 @@ def define_args():
 
 	#### Override the image download and specify one already downloaded
 	#### Example: "~/RpPi4-Arch-Install/arch_image.tar.gz"
-	ap.add_argument("i", "--image",
+	ap.add_argument("-i", "--image",
 		help="Path to an already downloaded Arch image.",
 		default=None)
 
