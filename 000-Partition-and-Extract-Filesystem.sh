@@ -28,7 +28,7 @@ DEFAULT_ARCH_IMAGE_URL="http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.
 # Handle image override switch #
 ################################
 # process arguments "$1", "$2", ... (i.e. "$@")
-while getopts "i:" opt; do
+while getopts "idu:" opt; do
     case $opt in
     i) IMAGE=$OPTARG ;;
     d) DEVICE=$OPTARG ;;
