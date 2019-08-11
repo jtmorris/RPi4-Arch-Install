@@ -80,8 +80,8 @@ echo;
 while true; do
 	read -p "Sound good? Continue? [y/n]" yn
 	case $yn in
-		[Yy]* ) CONT=true;;
-		[Nn]* ) CONT=false;;
+		[Yy]* ) CONT=true; done;;
+		[Nn]* ) CONT=false; done;;
 		* ) echo "Please answer yes or no.";;
 	esac
 done
