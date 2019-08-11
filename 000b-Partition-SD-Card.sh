@@ -42,7 +42,7 @@ done
 if [ $CONT == false ]
 then
 	echo "[ERR] User cancellation."
-	exit 2;;
+	exit 2
 fi
 echo; echo;
 
