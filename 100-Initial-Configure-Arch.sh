@@ -34,6 +34,11 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 touch /etc/locale.conf
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
+# Disable annoying "audit" messages
+echo "[INFO] Disable annoying 'audit' messages."
+systemctl mask systemd-journald-audit.socket
+echo "audit=0" >> /boot/cmdline.txt
+
 # Update
 echo "[INFO] Updating Arch install."
 pacman -Syuu --noconfirm
@@ -58,17 +63,16 @@ passwd john
 # Install sudo
 echo "[INFO] Installing 'sudo'"
 pacman -S --noconfirm --needed sudo
+echo "" >> /etc/sudoers
+echo "Uncomment to allow members of group whell to execute any command" >> /etc/sudoers
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
 # Add 'john' to wheel
 echo "[INFO] Giving 'john' sudo rights."
 gpasswd -a john wheel
-
-echo "[INFO] Switching to 'john' and asking for 'sudo' rights."
-su john
-cd ~
-echo; echo;
-echo "Please retype your password to give script sudo permissions."
-sudo pwd
+echo
+echo "Please re-enter the password for 'john' in the 'sudo' prompt below:"
+su - john -c "sudo pwd"
 
 # Install AUR helper 'trizen'
 echo "[INFO] Installing 'git'."
@@ -76,7 +80,7 @@ sudo pacman -S --noconfirm --needed git
 echo "[INFO] Install 'trizen' AUR helper."
 git clone http://aur.archlinux.org/trizen.git
 cd trizen
-sudo makepkg -si --noconfirm
+su - john -c "sudo makepkg -si --noconfirm"
 cd ..
 rm -rf trizen
 
@@ -85,7 +89,7 @@ rm -rf trizen
 echo "[INFO] Installing 'powerpill'"
 git clone https://aur.archlinux.org/powerpill.git
 cd powerpill
-sudo makepkg -si --noconfirm
+su - john -c "sudo makepkg -si --noconfirm"
 cd ..
 rm -rf powerpill
 
