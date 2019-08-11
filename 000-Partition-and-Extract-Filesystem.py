@@ -115,7 +115,7 @@ def define_args():
 
 	#### The device to format and install to.
 	#### Example: "/dev/sda"
-	ap.add_argument("-d", "--device", require=True,
+	ap.add_argument("-d", "--device",
 		help="Disk to install to. Example: /dev/sda")
 
 	args = vars(ap.parse_args())
