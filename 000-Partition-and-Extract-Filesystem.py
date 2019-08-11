@@ -101,20 +101,20 @@ def main():
 	# Clean up #
 	############
 	print("[INFO] Unmounting partitions.")
-	shcw("sudo umount root boot")
+	print(goshcw(shcw("sudo umount root boot")))
 	print ("[INFO] Cleaning up.")
 	os.chdir("../")
-	shcw("rm -r build")
+	print(goshcw(shcw("rm -r build")))
 
 	print("\n\n\n")
 	print("[INFO] SD Card ready. Arch installed.")
 	print("\t Default user: 'alarm'\t\t Password: 'alarm'")
 	print("\t Root user: 'root'\t\t Password: 'root'")
 	print("\t Run the following commands upon first sign-in:")
-	print("\t\t\t 'pacman-key --init'")
-	print("\t\t\t 'pacman-key --populate archlinuxarm'")
-	print("[INFO] Don't forget to configure your system!")
-	print("\t\t\t https://wiki.archlinux.org/index.php/Installation_guide#Configure_the_system")
+	print("\t\t 'pacman-key --init'")
+	print("\t\t 'pacman-key --populate archlinuxarm'")
+	print("\tDon't forget to configure your system!")
+	print("\t\t https://wiki.archlinux.org/index.php/Installation_guide#Configure_the_system")
 
 
 def define_args():
