@@ -21,7 +21,7 @@
 # 		./000-Partition-and-Extract-Filesystem.py --device "/dev/sdX"
 ########################################################################
 
-DEFAULT_ARCH_IMAGE_URL = "http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz"
+DEFAULT_ARCH_IMAGE_URL="http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz"
 
 
 ################################
@@ -84,8 +84,8 @@ echo;
 while true; do
 	read -p "Sound good? Continue? [y/n]" yn
 	case $yn in
-		[Yy]* ) $CONT = true;;
-		[Nn]* ) $CONT = false;;
+		[Yy]* ) $CONT=true;;
+		[Nn]* ) $CONT=false;;
 		* ) echo "Please answer yes or no.";;
 	esac
 done
