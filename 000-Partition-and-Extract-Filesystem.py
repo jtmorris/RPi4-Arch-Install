@@ -7,8 +7,9 @@
 # Requires:
 #	- *NIX based computer
 #		- Python 3
-#		- sfdisk
-#		- bsdtar
+#		- sfdisk:			Partition creation
+#		- bsdtar:			Image decompression
+#		- tree [OPTIONAL]:	Log messages
 # Preparation:
 #	- Attach SD card with enough storage for the operating system.
 #		- The hardware device file. (e.g. "/dev/sda")
