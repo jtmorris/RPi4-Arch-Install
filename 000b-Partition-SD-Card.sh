@@ -50,4 +50,6 @@ echo; echo;
 # Format that bad boy!
 echo "[INFO] Formatting and partitioning '$1'."
 sudo sfdisk $1 < partition_structure.sfdisk
+sudo mkfs.ext4 "$(1)2"
+sudo mkfs.vfat "$(1)1"
 echo "[INFO] Formatting and partitioning complete."
