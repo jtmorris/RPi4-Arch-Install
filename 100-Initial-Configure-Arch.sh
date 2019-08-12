@@ -87,6 +87,15 @@ rm -rf trizen
 # Install some basic important packages
 # powerpill for parallel package downloading
 echo "[INFO] Installing 'powerpill'"
+sudo pacman -S --noconfirm --needed aria2
+sudo pacman -S --noconfirm --needed pyalpm
+sudo pacman -S --noconfirm --needed python3
+sudo pacman -S --noconfirm --needed python3-xcgf
+sudo pacman -S --noconfirm --needed python3-xcpf
+sudo pacman -S --noconfirm --needed pm2ml
+sudo pacman -S --noconfirm --needed python3-threaded_servers
+sudo pacman -S --noconfirm --needed reflector
+sudo pacman -S --noconfirm --needed rsync
 git clone https://aur.archlinux.org/powerpill.git
 cd powerpill
 su - john -c "sudo makepkg -si --noconfirm"
