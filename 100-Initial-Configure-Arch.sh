@@ -73,35 +73,3 @@ gpasswd -a john wheel
 echo
 echo "Please re-enter the password for 'john' in the 'sudo' prompt below:"
 su - john -c "sudo pwd"
-
-# Install AUR helper 'trizen'
-echo "[INFO] Installing 'git'."
-sudo pacman -S --noconfirm --needed git
-echo "[INFO] Install 'trizen' AUR helper."
-git clone http://aur.archlinux.org/trizen.git
-cd trizen
-su - john -c "sudo makepkg -si --noconfirm"
-cd ..
-rm -rf trizen
-
-# Install some basic important packages
-# powerpill for parallel package downloading
-echo "[INFO] Installing 'powerpill'"
-sudo pacman -S --noconfirm --needed aria2
-sudo pacman -S --noconfirm --needed pyalpm
-sudo pacman -S --noconfirm --needed python3
-sudo pacman -S --noconfirm --needed python3-xcgf
-sudo pacman -S --noconfirm --needed python3-xcpf
-sudo pacman -S --noconfirm --needed pm2ml
-sudo pacman -S --noconfirm --needed python3-threaded_servers
-sudo pacman -S --noconfirm --needed reflector
-sudo pacman -S --noconfirm --needed rsync
-git clone https://aur.archlinux.org/powerpill.git
-cd powerpill
-su - john -c "sudo makepkg -si --noconfirm"
-cd ..
-rm -rf powerpill
-
-# network-manager for wifi
-echo "[INFO] Installing 'networkmanager'"
-sudo powerpill -S networkmanager --noconfirm
