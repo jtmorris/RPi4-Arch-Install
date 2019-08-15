@@ -22,4 +22,6 @@ then
 	exit 1;
 fi
 echo "[INFO] Download image from '$1'."
-wget $1 -O "build/arch_image.tar.gz"
+cd build
+curl -LO $1
+cd ..
