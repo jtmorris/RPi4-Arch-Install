@@ -6,6 +6,8 @@
 # Source	:	https://github.com/jtmorris/RPi4-Arch-Install
 # Requires:
 #	- sfdisk
+#	- mkfs.ext4
+#	- mkfs.vfat (dostools)
 # Arguments:
 #	1)	Path to device file of SD card to partition.
 #		Example: "/dev/sda"

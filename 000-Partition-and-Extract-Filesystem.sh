@@ -7,8 +7,10 @@
 # Requires:
 #	- *NIX based computer
 #		- sfdisk:			Partition creation
+#		- mkfs.ext4			Filesystem creation
+#		- mkfs.vfat (dostools)		Filesystem creation
 #		- bsdtar:			Image decompression
-#		- tree [OPTIONAL]:	Log messages
+#		- tree [OPTIONAL]:		Log messages
 # Preparation:
 #	- Attach SD card with enough storage for the operating system.
 #		- The hardware device file. (e.g. "/dev/sda")
