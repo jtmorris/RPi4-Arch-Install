@@ -23,7 +23,7 @@
 # 		./000-Partition-and-Extract-Filesystem.py /dev/sdX
 ########################################################################
 
-DEFAULT_ARCH_IMAGE_URL="http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz"
+DEFAULT_ARCH_IMAGE_URL="http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-4-latest.tar.gz"
 
 
 ################################
