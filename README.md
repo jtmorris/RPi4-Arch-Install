@@ -7,6 +7,9 @@ Optional 2nd argument is a path to the Arch compressed tar ball you want extract
 
 Optional 3rd argument is an alternate automatic download location. Pass an empty string as the 2nd argument, and the alternate download URL if you want to overload the automatic download location detailed above.
 
+Some further useful setup information is available in this repository's
+[wiki](https://github.com/jtmorris/RPi4-Arch-Install/wiki).
+
 ## Examples:
 **Simple:**
 ```bash
